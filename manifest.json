@@ -1,0 +1,25 @@
+{
+    "manifest_version": 2,
+
+    "name": "Particle clicker helper",
+    "description": "Calculates ratios in particle clicker.",
+    "version": "1.0",
+
+//    "default_locale": "en",
+
+    "permissions": [
+        "http://particle-clicker.web.cern.ch/*"
+    ],
+
+    "icons": {
+        "19": "icon.png"
+    },
+
+    "content_scripts": [
+        {
+            "matches": ["http://particle-clicker.web.cern.ch/*"],
+            "css": [ "content.css" ],
+            "js": ["jquery-2.1.1.min.js", "content.js"]
+        }
+    ]
+}
