@@ -23,12 +23,16 @@ function str2num(s) {
     var n = parseFloat(match[1]);
     if(match[2] == "k") n = n * 1000;
     if(match[2] == "M") n = n * 1000000;
+    if(match[2] == "B") n = n * 1000000000;
+    if(match[2] == "T") n = n * 1000000000000;
     return n;
 }
 
 function num2str(n) {
-    if(n >    1000) return (n/   1000).toFixed(2) + "k";
-    if(n > 1000000) return (n/1000000).toFixed(2) + "M";
+    if(n > 1000000000000) return (n/1000000000000).toFixed(2) + "T";
+    if(n >    1000000000) return (n/   1000000000).toFixed(2) + "B";
+    if(n >       1000000) return (n/      1000000).toFixed(2) + "M";
+    if(n >          1000) return (n/         1000).toFixed(2) + "k";
 }
 
 function updateRatio(button, amountStr, priceStr) {
@@ -95,6 +99,9 @@ function updateButtonTimeLeft(o, total, delta) {
     if(price > total) {
         var seconds = ((price - total) / delta).toFixed(0);
         timeLeft.text(seconds + "s");
+    }
+    else {
+        timeLeft.remove();
     }
 }
 
